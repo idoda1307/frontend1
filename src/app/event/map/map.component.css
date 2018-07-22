@@ -1,0 +1,37 @@
+agm-map{
+  height: 520px;
+  }
+#radiusBox{
+width: 160px;
+}
+agm-info-window{
+  height: 50px;
+}
+.example-margin {
+  margin: 10px;
+}
+
+.mat-slider-horizontal {
+  width: 300px;
+}
+
+agm-marker{
+  width: 10px;
+  height: 10px;
+}
+
+
+.spacer {
+  margin-left: 200px;
+  flex: 50px;
+}
+
+.spacer1{
+  margin-left: 300px;
+  flex: 50px;
+}
+
+.findMeBtn{
+  padding: 0;
+  margin: 0;
+}

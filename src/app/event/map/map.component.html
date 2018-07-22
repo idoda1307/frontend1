@@ -1,0 +1,27 @@
+
+<div class="form-group">
+  <mat-slider class="example-margin" (input)="onInputChange($event)" min="1" max="50000" thumbLabel [displayWith]="formatLabel"
+    tickInterval="1000" value="1000">
+  </mat-slider>
+  <span class="spacer"></span>
+  <button class="findMeBtn" mat-stroked-button color="warn" (click)="getUserLocation()">Find Me</button>
+  <span class="spacer1"></span>
+    <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl">
+</div>
+<agm-map [latitude]="location.lat" [longitude]="location.lng" [scrollwheel]="false" [zoom]="zoom" (mapClick)="mapClicked($event)">
+  <agm-marker [latitude]="location.lat" [longitude]="location.lng" [iconUrl]="'http://maps.google.com/mapfiles/ms/icons/blue.png'"  (markerClick)="openCreateEvent()">
+  </agm-marker>
+  <agm-marker *ngFor="let m of filteredMarkers; let i = index" [latitude]="m.location.lat" [longitude]="m.location.lng">
+    <agm-info-window>
+      <h3>{{m.title}}</h3>
+      <div>{{m.description}}</div>
+      <button mat-button color="warn">Join To Event</button>
+      <div *ngIf="userIsAuthenticated && userId===m.creator">
+        <button *ngIf="userIsAuthenticated" mat-button color="warn" (click)="onDelete(m)">DELETE</button>
+      </div>
+    </agm-info-window>
+  </agm-marker>
+  <agm-circle [latitude]="location.lat" [longitude]="location.lng" [radius]="enteredRadius" [fillColor]="'red'" [circleDraggable]="false"
+    [editable]="false">
+  </agm-circle>
+</agm-map>

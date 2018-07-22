@@ -1,0 +1,19 @@
+  <mat-card>
+    <!-- <mat-spinner *ngIf="isLoading"></mat-spinner>  -->
+    <form [formGroup]="form" (submit)="onAddEvent()" *ngIf="!isLoading">
+      <mat-form-field>
+        <input matInput
+        type="text"
+        formControlName="title"
+        placeholder="Event Title">
+        <mat-error *ngIf="form.get('title').invalid">Please enter an event title.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+      <input type="text" matInput rows="4" placeholder="Event Description" formControlName="description">
+      <mat-error *ngIf="form.get('description').invalid">Please enter an event description.</mat-error>
+      </mat-form-field>
+      <br>
+      <br>
+      <button mat-stroked-button color="primary" type="submit">Add Event</button>
+    </form>
+  </mat-card>
